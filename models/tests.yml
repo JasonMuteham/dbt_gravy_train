@@ -1,0 +1,83 @@
+version: 2
+
+models:
+- name: mps
+  description: "MP model"
+  columns:
+    - name: id
+      description: "The primary key for this table"
+      tests:
+        - unique
+        - not_null
+    - name: first_name
+      description: "First name of MP"
+      tests:
+        - not_null  
+    - name: last_name
+      description: "Last name of MP"
+      tests:
+        - not_null     
+    - name: full_name
+      description: "Full name of MP"
+      tests:
+        - not_null         
+    - name: name_full_title
+      description: "Full name including title of MP"
+      tests:
+        - not_null     
+    - name: gender
+      description: "Gender of MP"
+      tests:
+        - not_null
+        - accepted_values:
+            values: ['F','M']        
+    - name: party_name
+      description: "Party name (full) of MP"
+      tests:
+        - not_null
+    - name: party_short
+      description: "Party name (short) of MP"
+      tests:
+        - not_null     
+    - name: constituency
+      description: "constituency name of MP"
+      tests:
+        - not_null 
+        - unique         
+    - name: constituency_id
+      description: "constituency id"
+      tests:
+        - not_null
+    - name: house
+      description: "House of MP"
+      tests:
+        - not_null    
+        - accepted_values:
+            values: ['Commons','Lords'] 
+    - name: first_elected_date
+      description: "Date MP first elected to parliament"
+      tests:
+        - not_null        
+
+- name: expenses
+  description: "expenses model"
+  columns:
+    - name: mp_id
+      description: "MP id"
+      tests:
+        - not_null
+        - relationships:
+            to: ref('mps')
+            field: id  
+    - name: financial_year
+      description: "Financial year"
+      tests:
+        - not_null
+    - name: claim_date
+      description: "Claim date"
+      tests:
+        - not_null    
+    - name: amount_claimed
+      description: "Amount claimed"
+      tests:
+        - not_null                                                        

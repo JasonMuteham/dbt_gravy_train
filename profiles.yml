@@ -1,0 +1,6 @@
+dbt_gravy_train:
+  outputs:
+    dev:
+      type: duckdb
+      path: 'E:\My Data Engineering\Gravy_Train_EtL_Pipeline\data\gravy_train.duckdb'
+  target: dev
