@@ -1,10 +1,16 @@
-Welcome to your new dbt project!
+# Gravy Train Data Build
 
-### Using the starter project
+### MP' on the Gravy Train
+
+Transform raw MP & Expense data from later analysis. 
+
+### Using the project
 
 Try running the following commands:
+- dbt seed
 - dbt run
 - dbt test
+- dbt build
 
 
 ### Resources:

@@ -43,9 +43,8 @@ models:
       description: "constituency name of MP"
       tests:
         - not_null 
-        - unique         
-    - name: constituency_id
-      description: "constituency id"
+    - name: constituency_code
+      description: "constituency code for geo"
       tests:
         - not_null
     - name: house
@@ -80,4 +79,19 @@ models:
     - name: amount_claimed
       description: "Amount claimed"
       tests:
-        - not_null                                                        
+        - not_null        
+
+- name: mp_expenses
+  description: "expenses model"
+  columns:
+    - name: mp_id
+      description: "MP id"
+      tests:
+        - not_null
+        - relationships:
+            to: ref('mps')
+            field: id                                                
+    - name: constituency
+      description: "MP Constituency"
+      tests:
+        - not_null
